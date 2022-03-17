@@ -15,40 +15,32 @@ function Calculator() {
   };
 
   return (
-    <div
-      type="flex"
-      justify="center"
-      align="middle"
-      style={{
-        minHeight: "100vh",
-        margin: "100px",
-
-        display: "flex",
-        align: "center",
-        justifyContent: "center",
-      }}
-    >
+    <>
       <Row
-        type="flex"
-        justify="center"
-        align="middle"
         style={{
-          minHeight: "100vh",
-          height: "540px",
-          margin: "100px",
-          padding: "100px",
+          display: "flex",
+          justifyContent: "center",
+          top: "60px",
+
+          position: "relative",
         }}
       >
-        <Col>{result}</Col>
         <Col>
-          <Button onClick={() => setResult("")}>Clear</Button>
-          <Button onClick={() => setResult(result.slice(0, -1))}>c</Button>
+          <h1>Calculator</h1>
+        </Col>
+      </Row>
+      <div className="calculator">
+        <input value={result} />
+
+        <div className="keypad">
+          <Button id="clear" onClick={() => setResult("")}>
+            Clear
+          </Button>
+          <Button onClick={() => setResult(result.slice(0, -1))}>C</Button>
           <Button name="/" onClick={() => handleClick("/")}>
             /
           </Button>
-        </Col>
 
-        <Col>
           <Button onClick={() => handleClick("7")}>7</Button>
           <Button value="8" onClick={() => handleClick("8")}>
             8
@@ -59,9 +51,7 @@ function Calculator() {
           <Button value="*" onClick={() => handleClick("*")}>
             *
           </Button>
-        </Col>
 
-        <Col>
           <Button value="4" onClick={() => handleClick("4")}>
             4
           </Button>
@@ -71,12 +61,10 @@ function Calculator() {
           <Button value="6" onClick={() => handleClick("6")}>
             6
           </Button>
-          <Button value="7" onClick={() => handleClick("7")}>
+          <Button value="-" onClick={() => handleClick("-")}>
             -
           </Button>
-        </Col>
 
-        <Col>
           <Button value="1" onClick={() => handleClick("1")}>
             1
           </Button>
@@ -89,15 +77,19 @@ function Calculator() {
           <Button value="+" onClick={() => handleClick("+")}>
             +
           </Button>
-        </Col>
 
-        <Col>
-          <Button>0</Button>
-          <Button>.</Button>
-          <Button onClick={Calculate}>=</Button>
-        </Col>
-      </Row>
-    </div>
+          <Button value="0" onClick={() => handleClick("0")}>
+            0
+          </Button>
+          <Button value="." onClick={() => handleClick(".")}>
+            .
+          </Button>
+          <Button id="result" className="hightlight" onClick={Calculate}>
+            =
+          </Button>
+        </div>
+      </div>
+    </>
   );
 }
 export default Calculator;
